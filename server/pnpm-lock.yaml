@@ -17,6 +17,9 @@ dependencies:
   express:
     specifier: ^4.19.2
     version: 4.19.2
+  express-list-endpoints:
+    specifier: ^7.1.0
+    version: 7.1.0
   inversify:
     specifier: ^6.0.2
     version: 6.0.2
@@ -563,6 +566,11 @@ packages:
   /etag@1.8.1:
     resolution: {integrity: sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==}
     engines: {node: '>= 0.6'}
+    dev: false
+
+  /express-list-endpoints@7.1.0:
+    resolution: {integrity: sha512-7FyKxABfkRC0t6B6btxlAcFr0WrpPAL12MFAGhAxoIi/OyphxVQzVmyuWbcNxEApBmNzzgt2khjlqj/3wyHMMA==}
+    engines: {node: '>=18'}
     dev: false
 
   /express@4.19.2:
