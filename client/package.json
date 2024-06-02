@@ -19,7 +19,8 @@
     "dotenv": "^16.4.5",
     "pidusage": "^3.0.2",
     "typescript": "^5.4.5",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "zlib": "^1.0.5"
   },
   "devDependencies": {
     "@types/better-queue": "^3.8.6",

@@ -26,6 +26,9 @@ dependencies:
   uuid:
     specifier: ^9.0.1
     version: 9.0.1
+  zlib:
+    specifier: ^1.0.5
+    version: 1.0.5
 
 devDependencies:
   '@types/better-queue':
@@ -169,4 +172,9 @@ packages:
   /uuid@9.0.1:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
     hasBin: true
+    dev: false
+
+  /zlib@1.0.5:
+    resolution: {integrity: sha512-40fpE2II+Cd3k8HWTWONfeKE2jL+P42iWJ1zzps5W51qcTsOUKM5Q5m2PFb0CLxlmFAaUuUdJGc3OfZy947v0w==}
+    engines: {node: '>=0.2.0'}
     dev: false
