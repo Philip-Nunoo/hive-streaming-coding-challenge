@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
-import { inject } from 'inversify';
+import { inject, injectable } from 'inversify';
 import { TYPES } from '../types';
 import { CpuUsageService } from '../services/CpuUsageService';
 
+@injectable()
 export class CpuUsageController {
   private cpuUsageService: CpuUsageService;
 
