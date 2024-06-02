@@ -16,4 +16,8 @@ const CpuUsageSchema: Schema = new Schema({
   timestamp: { type: Date, default: Date.now },
 });
 
+CpuUsageSchema.index({ clientId: 1 });
+CpuUsageSchema.index({ timestamp: 1 });
+CpuUsageSchema.index({ cpu: 1 });
+
 export const CpuUsage = mongoose.model<ICpuUsage>('CpuUsage', CpuUsageSchema);
