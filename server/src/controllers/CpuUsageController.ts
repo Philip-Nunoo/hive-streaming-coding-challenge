@@ -45,4 +45,29 @@ export class CpuUsageController {
       res.status(500).send('Error fetching CPU usage data.');
     }
   };
+
+  public getHighCpuUsageClients = async (req: Request, res: Response): Promise<void> => {
+    try {
+      const { threshold, startTime, endTime } = req.query;
+      const thresholdNumber = parseFloat(threshold as string);
+      const start = new Date(startTime as string);
+      const end = new Date(endTime as string);
+      const highCpuClients = await this.cpuUsageService.getHighCpuUsageClients(thresholdNumber, start, end);
+      res.status(200).json(highCpuClients);
+    } catch (error) {
+      res.status(500).send('Error fetching high CPU usage clients.');
+    }
+  };
+
+  public getClientsAboveCpuThreshold = async (req: Request, res: Response): Promise<void> => {
+    try {
+      const { threshold } = req.query;
+      const thresholdNumber = parseFloat(threshold as string);
+      const clients = await this.cpuUsageService.getClientsAboveCpuThreshold(thresholdNumber);
+      res.status(200).json(clients);
+    } catch (error) {
+      res.status(500).send('Error fetching clients above CPU threshold.');
+    }
+  };
+
 }
