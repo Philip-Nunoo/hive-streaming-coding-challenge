@@ -1,5 +1,6 @@
 import { injectable } from 'inversify';
 import { ICpuUsage, CpuUsage } from '../models/CpuUsage';
+import { AggregatedCpuUsage, ClientsAboveThreshold } from '../models/AggregatedCpuUsage';
 
 @injectable()
 export class CpuUsageService {
@@ -11,7 +12,7 @@ export class CpuUsageService {
         return CpuUsage.find(filter).sort({ timestamp: -1 });
     }
 
-    public async getHighCpuUsageClients(threshold: number, startTime: Date, endTime: Date): Promise<any[]> {
+    public async getHighCpuUsageClients(threshold: number, startTime: Date, endTime: Date): Promise<AggregatedCpuUsage[]> {
         return CpuUsage.aggregate([
             {
                 $match: {
@@ -31,10 +32,16 @@ export class CpuUsageService {
             {
                 $sort: { averageCpu: -1 }
             }
-        ]);
+        ]).exec().then((result) => result.map((r) => ({
+            clientId: r._id,
+            averageCpu: r.averageCpu,
+            maxCpu: r.maxCpu,
+            minCpu: r.minCpu,
+            count: r.count
+        })));
     }
 
-    public async getClientsAboveCpuThreshold(threshold: number): Promise<any[]> {
+    public async getClientsAboveCpuThreshold(threshold: number): Promise<ClientsAboveThreshold[]> {
         return CpuUsage.aggregate([
             {
                 $match: {
@@ -50,6 +57,9 @@ export class CpuUsageService {
             {
                 $sort: { count: -1 }
             }
-        ]);
+        ]).exec().then((result) => result.map((r) => ({
+            clientId: r._id,
+            count: r.count
+        })));
     }
 }
