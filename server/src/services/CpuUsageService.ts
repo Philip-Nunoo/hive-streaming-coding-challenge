@@ -1,5 +1,7 @@
-import { ICpuUsage, CpuUsage } from "../models/CpuUsage";
+import { injectable } from 'inversify';
+import { ICpuUsage, CpuUsage } from '../models/CpuUsage';
 
+@injectable()
 export class CpuUsageService {
     public async saveCpuUsages(usages: ICpuUsage[]): Promise<void> {
         await CpuUsage.insertMany(usages);
