@@ -1,21 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "ES2016",
     "module": "commonjs",
-    "sourceMap": true,
-    "outDir": "./dist",
-    "removeComments": true,
-    /* Strict Type-Checking Options */
+    "outDir": "dist",
+    "rootDir": "src",
     "strict": true,
-    "noImplicitAny": false,
-    "strictNullChecks": true,
-    "alwaysStrict": true,
-    /* Module Resolution Options */
-    "moduleResolution": "node",
-    "baseUrl": "./src",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "skipLibCheck": true
   },
-  "include": [
-    "./src/**/*"
-  ]
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
 }
