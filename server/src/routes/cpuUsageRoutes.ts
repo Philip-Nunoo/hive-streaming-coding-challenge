@@ -8,5 +8,7 @@ const cpuUsageController = container.get<CpuUsageController>(TYPES.CpuUsageContr
 
 router.post('/report', cpuUsageController.reportCpuUsage);
 router.get('/usage', cpuUsageController.getCpuUsages);
+router.get('/high-cpu-clients', cpuUsageController.getHighCpuUsageClients);
+router.get('/clients-above-threshold', cpuUsageController.getClientsAboveCpuThreshold);
 
 export default router;
