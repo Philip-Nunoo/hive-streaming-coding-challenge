@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import 'reflect-metadata';
 import app from './app';
 import { MONGO_URI, SERVER_PORT } from './config';
 
