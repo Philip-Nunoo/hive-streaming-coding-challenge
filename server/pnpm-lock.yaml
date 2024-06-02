@@ -14,9 +14,15 @@ dependencies:
   express:
     specifier: ^4.19.2
     version: 4.19.2
+  inversify:
+    specifier: ^6.0.2
+    version: 6.0.2
   mongoose:
     specifier: ^8.4.1
     version: 8.4.1
+  reflect-metadata:
+    specifier: ^0.2.2
+    version: 0.2.2
   ts-node:
     specifier: ^10.9.2
     version: 10.9.2(@types/node@20.14.0)(typescript@5.4.5)
@@ -31,6 +37,9 @@ devDependencies:
   '@types/express-session':
     specifier: ^1.18.0
     version: 1.18.0
+  '@types/inversify':
+    specifier: ^2.0.33
+    version: 2.0.33
   '@types/node':
     specifier: ^20.14.0
     version: 20.14.0
@@ -152,6 +161,13 @@ packages:
 
   /@types/http-errors@2.0.4:
     resolution: {integrity: sha512-D0CFMMtydbJAegzOyHjtiKPLlvnm3iTZyZRSZoLq2mRhDdmLfIWOCYPfQJ4cu2erKghU++QvjcUjp/5h7hESpA==}
+    dev: true
+
+  /@types/inversify@2.0.33:
+    resolution: {integrity: sha512-WAue6NmBkfjjdGKaGSSTZY9HeSao2xL5rEd3UgGtb5lWaAqe/GmrpCxsAoGvepx2Cg932QfqukJfrmH1uN4Ptw==}
+    deprecated: This is a stub types definition for inversify (http://inversify.io). inversify provides its own type definitions, so you don't need @types/inversify installed!
+    dependencies:
+      inversify: 6.0.2
     dev: true
 
   /@types/mime@1.3.5:
@@ -702,6 +718,9 @@ packages:
   /inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
 
+  /inversify@6.0.2:
+    resolution: {integrity: sha512-i9m8j/7YIv4mDuYXUAcrpKPSaju/CIly9AHK5jvCBeoiM/2KEsuCQTTP+rzSWWpLYWRukdXFSl6ZTk2/uumbiA==}
+
   /ipaddr.js@1.9.1:
     resolution: {integrity: sha512-0KI/607xoxSToH7GjN1FfSbLoU0+btTicjsQSWQlh/hZykN8KpmMf7uYwPW3R+akZ6R/w18ZlXSHBYXiYUPO3g==}
     engines: {node: '>= 0.10'}
@@ -996,6 +1015,10 @@ packages:
     dependencies:
       picomatch: 2.3.1
     dev: true
+
+  /reflect-metadata@0.2.2:
+    resolution: {integrity: sha512-urBwgfrvVP/eAyXx4hluJivBKzuEbSQs9rKWCrCkbSxNv8mxPcUZKeuoF3Uy4mJl3Lwprp6yy5/39VWigZ4K6Q==}
+    dev: false
 
   /resolve@1.22.8:
     resolution: {integrity: sha512-oKWePCxqpd6FlLvGV1VU0x7bkPmmCNolxzjMf4NczoDnQcIWrAF+cPtZn5i6n+RfD2d9i0tzpKnG6Yk168yIyw==}
