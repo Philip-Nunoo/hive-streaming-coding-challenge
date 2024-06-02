@@ -1,0 +1,1 @@
+# Hive streaming code solution
