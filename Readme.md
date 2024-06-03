@@ -14,6 +14,7 @@ This project is a CPU Monitoring Service designed to collect and report CPU usag
 - [Running the Client](#running-the-client)
 - [Recommendations for Preventing Data Loss](#recommendations-for-preventing-data-loss)
 - [Detailed Description](#detailed-description)
+- [Scalability of Design](#scalability-of-design)
 - [Conclusion](#conclusion)
 
 ## Features
@@ -28,6 +29,8 @@ This project is a CPU Monitoring Service designed to collect and report CPU usag
 
 The project is divided into two main parts: the server and the client.
 
+[View on Eraser![](https://app.eraser.io/workspace/JWOITVvUKtCcPXtMuTEM/preview?elements=b-Vk04_bm1TdhAekRQWTzA&type=embed)](https://app.eraser.io/workspace/JWOITVvUKtCcPXtMuTEM?elements=b-Vk04_bm1TdhAekRQWTzA)
+
 ### Server
 
 The server is built using Node.js, Express, and MongoDB. It includes:
@@ -41,6 +44,8 @@ The server is built using Node.js, Express, and MongoDB. It includes:
 ### Client
 
 The client is built using Node.js and collects CPU usage data to send to the server. It includes:
+
+[View on Eraser![](https://app.eraser.io/workspace/JWOITVvUKtCcPXtMuTEM/preview?elements=oD9CsyowMCHznXciGwIetA&type=embed)](https://app.eraser.io/workspace/JWOITVvUKtCcPXtMuTEM?elements=oD9CsyowMCHznXciGwIetA)
 
 - **Services**: For fetching CPU usage data, managing client ID, and queueing data for transmission.
 - **Configuration**: Environment configuration.
@@ -236,6 +241,48 @@ By following these recommendations, you can minimize the risk of data loss and e
 #### Main Application
 
 - `src/index.ts`: Initializes services and sets up periodic reporting of CPU usage data.
+
+## Scalability of design
+
+[View on Eraser![](https://app.eraser.io/workspace/JWOITVvUKtCcPXtMuTEM/preview?elements=BCUmLGdynxkdN_FKg2y6TA&type=embed)](https://app.eraser.io/workspace/JWOITVvUKtCcPXtMuTEM?elements=BCUmLGdynxkdN_FKg2y6TA)
+
+1. Architecture
+   * Microservices-Friendly: The architecture separates client and server logic, making it easy to scale each component independently. This is suitable for a microservices approach where different services can be deployed and scaled based on demand.
+   
+   * Separation of Concerns: Clear separation between data collection (client), data processing, and storage (server). This makes it easier to manage and scale each part of the system independently.
+
+2. Client Scalability
+   * Lightweight Client: The client code is lightweight and performs CPU usage monitoring with minimal overhead. This ensures that it can be deployed on a large number of devices without significant performance impact.
+   * Persistent Queue: Using a persistent queue on the client side ensures that data is reliably transmitted to the server, even if the client is temporarily offline. This approach helps in handling network interruptions and reduces data loss.
+
+3. Server Scalability
+   * Node.js and Express: Node.js is known for its non-blocking, event-driven architecture, which is suitable for handling a large number of concurrent connections. Express is lightweight and does not add significant overhead.
+
+   * MongoDB: MongoDB is designed to scale out by distributing data across multiple servers (sharding). It supports high throughput and can handle large volumes of data, making it a good choice for storing CPU usage data.
+
+   * Horizontal Scaling: The server can be scaled horizontally by deploying multiple instances behind a load balancer. This approach allows the system to handle more requests by adding more servers.
+
+   * Aggregation and Querying: The use of MongoDB's aggregation framework allows for efficient querying and analysis of CPU usage data. Indexes can be created on relevant fields to improve query performance.
+
+4. Communication Protocol
+   * HTTP/HTTPS: HTTP/HTTPS is a scalable and widely-used communication protocol. Using HTTPS ensures secure data transmission. The stateless nature of HTTP requests makes it easy to scale the server by adding more instances.
+
+   * Retry Mechanism: The retry mechanism with exponential backoff on the client side ensures reliable data transmission to the server, even in the face of transient network issues.
+
+5. Data Compression
+   * Gzip Compression: Compressing data using gzip before transmission reduces the amount of data sent over the network, improving bandwidth usage and reducing latency.
+
+6. Monitoring and Logging
+   * Comprehensive Logging: Implementing comprehensive logging on both the client and server sides helps in monitoring the system's health and diagnosing issues. Logs can be aggregated and analyzed to identify bottlenecks and optimize performance.
+
+   * Monitoring Tools: Tools like Prometheus, Grafana, or commercial solutions can be used to monitor the performance and scalability of the server.
+
+7. Potential Bottlenecks and Considerations
+   * Database Scaling: As the volume of data grows, MongoDB might become a bottleneck. Considerations include sharding, replica sets, and optimizing indexes to ensure the database scales properly.
+
+   * Network Latency: As the system scales geographically, network latency between clients and the server can become an issue. Using Content Delivery Networks (CDNs) or deploying servers in multiple regions can help mitigate this.
+
+   * Rate Limiting: Implementing rate limiting on the server can prevent abuse and ensure fair usage among clients, which is crucial as the number of clients grows.
 
 ## Consideration
 
