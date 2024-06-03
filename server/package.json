@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/index.js",
-    "dev": "npx ts-node-dev --respawn --transpile-only --debug ./src/server.ts",
+    "dev": "npx ts-node-dev --respawn --transpile-only ./src/server.ts",
     "prod": "build && start"
   },
   "keywords": [],
